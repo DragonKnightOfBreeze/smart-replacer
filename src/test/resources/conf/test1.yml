@@ -1,0 +1,28 @@
+replacers:
+- id: r1
+  name: literalReplacer
+  args:
+    oldValue: FOO
+    newValue: BAR
+processors:
+- id: p1
+  name: fileNameProcessor
+- id: p2
+  name: directoryNameProcessor
+- id: p3
+  name: fileTextProcessor
+- id: p4
+  name: inArchiveFileNameProcessor
+- id: p5
+  name: inArchiveDirectoryNameProcessor
+- id: p6
+  name: inArchiveFileTextProcessor
+tasks:
+- paths: [ tmp/FOO_test ]
+  outputPaths: [ tmp/BAR_test ]
+  steps:
+  - processors: [ p1, p2, p3, p4, p5, p6 ]
+    replacers: [ r1 ]
+
+  
+  

@@ -1,0 +1,13 @@
+#!/bin/bash
+rootPath=$(cd "$(dirname "$0")/.."; pwd)
+libPath="$rootPath"/lib
+confPath="$rootPath"/conf
+logsPath="$rootPath"/logs
+javaBin="java"
+jvmArgs="-Xms1G -Xmx1G"
+javaArgs="$javaArgs -DLOG_HOME="$logsPath""
+mainClass="icu.windea.repl.MainKt"
+args=$@
+# debugArgs="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+
+$javaBin $jvmArgs $javaArgs -cp ""$libPath"/*":"$confPath" $mainClass $confPath $args

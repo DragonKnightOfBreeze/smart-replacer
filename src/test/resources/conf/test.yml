@@ -1,0 +1,15 @@
+replacers:
+- id: r
+  name: literalReplacer
+  args:
+    oldValue: FOO
+    newValue: BAR
+processors:
+- id: p
+  name: everyWhereProcessor
+tasks:
+- paths: [ tmp/FOO_test.tar.gz ]
+  outputPaths: [ tmp/BAR_test.tar.gz ]
+  steps:
+  - processors: [ p ]
+    replacers: [ r ]
